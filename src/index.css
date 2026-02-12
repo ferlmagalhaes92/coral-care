@@ -2,42 +2,30 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* Design system for Coral Psicologia */
 
 @layer base {
   :root {
-    --background: 33 22% 95%; /* #F5F1EC */
-    --foreground: 211 13% 34%; /* #4A5561 */
-
-    --card: 33 22% 95%; /* #F5F1EC */
-    --card-foreground: 211 13% 34%; /* #4A5561 */
-
+    --background: 33 22% 95%;
+    --foreground: 211 13% 34%;
+    --card: 33 22% 95%;
+    --card-foreground: 211 13% 34%;
     --popover: 0 0% 100%;
     --popover-foreground: 211 13% 34%;
-
-    --primary: 6 78% 68%; /* #EF7B6C */
+    --primary: 6 78% 68%;
     --primary-foreground: 33 22% 95%;
-
-    --secondary: 15 32% 87%; /* #EAD7D1 - blush sand */
+    --secondary: 15 32% 87%;
     --secondary-foreground: 211 13% 34%;
-
-    --muted: 33 16% 86%; /* #E2DDD6 - warm divider */
-    --muted-foreground: 210 12% 60%; /* #8E9AA6 */
-
-    --accent: 6 78% 68%; /* Using primary coral as accent too */
+    --muted: 33 16% 86%;
+    --muted-foreground: 210 12% 60%;
+    --accent: 6 78% 68%;
     --accent-foreground: 33 22% 95%;
-
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
-
-    --border: 33 16% 86%; /* #E2DDD6 */
+    --border: 33 16% 86%;
     --input: 33 16% 86%;
     --ring: 6 78% 68%;
-
     --radius: 0.75rem;
-
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 240 5.3% 26.1%;
     --sidebar-primary: 240 5.9% 10%;
@@ -49,7 +37,6 @@ All colors MUST be HSL.
   }
 
   .dark {
-    /* Keeping dark mode accessible but project brief specified light organic tones mostly */
     --background: 222.2 84% 4.9%;
     --foreground: 210 40% 98%;
     --card: 222.2 84% 4.9%;
@@ -79,11 +66,10 @@ All colors MUST be HSL.
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
 
-@layer base {
   * {
     @apply border-border;
   }
-  
+
   html {
     scroll-behavior: smooth;
   }
@@ -91,14 +77,14 @@ All colors MUST be HSL.
   body {
     @apply bg-background text-foreground font-sans antialiased;
   }
-  
+
   h1, h2, h3, h4, h5, h6 {
     @apply font-serif;
   }
-  
+}
+
+@layer utilities {
   .font-display {
     font-family: 'Cormorant Garamond', serif;
-  }
-    @apply bg-background text-foreground;
   }
 }
