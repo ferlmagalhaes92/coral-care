@@ -1,6 +1,6 @@
 export const About = () => {
   return (
-    <section className="py-24 bg-background relative overflow-hidden">
+    <section id="about" className="py-24 bg-background relative overflow-hidden">
       <div className="container px-4 md:px-6 mx-auto">
         <div className="max-w-3xl mx-auto text-center space-y-8">
           <div className="inline-flex items-center justify-center w-16 h-1 rounded-full bg-primary/30 mb-8 mx-auto" />
