@@ -4,7 +4,6 @@ import { cn } from "@/lib/utils";
 import { Link } from "react-router-dom";
 
 const navItems = [
-  { label: "A Coral", href: "/", isRoute: true },
   { label: "Equipe", href: "/equipe", isRoute: true },
   { label: "Grupos Terapêuticos", href: "/grupos-terapeuticos", isRoute: true },
   { label: "Palestras", href: "/palestras", isRoute: true },

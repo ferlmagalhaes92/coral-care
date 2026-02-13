@@ -13,12 +13,8 @@ export const Hero = () => {
         />
         <div className="absolute inset-0 bg-gradient-to-b from-background/30 via-background/10 to-background/80" />
       </div>
-      
+
       <div className="container relative z-10 px-4 md:px-6 text-center max-w-4xl mx-auto animate-fade-in">
-        <span className="inline-block py-1 px-3 rounded-full bg-white/50 backdrop-blur-sm border border-white/60 text-foreground/80 text-sm font-medium tracking-wide mb-6 font-display">
-          Coral Psicologia
-        </span>
-        
         <h1 className="text-4xl md:text-5xl lg:text-7xl font-bold text-foreground mb-6 leading-tight tracking-tight">
           Um espaço seguro para você <span className="text-primary italic">existir</span> com autenticidade.
         </h1>
