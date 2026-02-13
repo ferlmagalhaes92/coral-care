@@ -1,10 +1,11 @@
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { Link } from "react-router-dom";
 
 const navItems = [
   { label: "Conheça o projeto", href: "#about" },
-  { label: "Equipe", href: "#team" },
+  { label: "Equipe", href: "/equipe", isRoute: true },
   { label: "Grupos terapêuticos", href: "#services" },
   { label: "Palestras", href: "#testimonials" },
   { label: "R.A.I", href: "#cta" },
@@ -36,15 +37,25 @@ export const Header = () => {
 
         {/* Desktop nav */}
         <nav className="hidden md:flex items-center gap-8">
-          {navItems.map((item) => (
-            <a
-              key={item.href}
-              href={item.href}
-              className="text-sm font-medium text-foreground/70 hover:text-primary transition-colors"
-            >
-              {item.label}
-            </a>
-          ))}
+          {navItems.map((item) =>
+            item.isRoute ? (
+              <Link
+                key={item.href}
+                to={item.href}
+                className="text-sm font-medium text-foreground/70 hover:text-primary transition-colors"
+              >
+                {item.label}
+              </Link>
+            ) : (
+              <a
+                key={item.href}
+                href={item.href}
+                className="text-sm font-medium text-foreground/70 hover:text-primary transition-colors"
+              >
+                {item.label}
+              </a>
+            )
+          )}
         </nav>
 
         {/* Mobile toggle */}
@@ -61,16 +72,27 @@ export const Header = () => {
       {mobileOpen && (
         <nav className="md:hidden bg-background/95 backdrop-blur-md border-b border-border/50 animate-fade-in">
           <div className="container mx-auto px-4 py-4 flex flex-col gap-4">
-            {navItems.map((item) => (
-              <a
-                key={item.href}
-                href={item.href}
-                onClick={() => setMobileOpen(false)}
-                className="text-sm font-medium text-foreground/70 hover:text-primary transition-colors py-1"
-              >
-                {item.label}
-              </a>
-            ))}
+            {navItems.map((item) =>
+              item.isRoute ? (
+                <Link
+                  key={item.href}
+                  to={item.href}
+                  onClick={() => setMobileOpen(false)}
+                  className="text-sm font-medium text-foreground/70 hover:text-primary transition-colors py-1"
+                >
+                  {item.label}
+                </Link>
+              ) : (
+                <a
+                  key={item.href}
+                  href={item.href}
+                  onClick={() => setMobileOpen(false)}
+                  className="text-sm font-medium text-foreground/70 hover:text-primary transition-colors py-1"
+                >
+                  {item.label}
+                </a>
+              )
+            )}
           </div>
         </nav>
       )}
