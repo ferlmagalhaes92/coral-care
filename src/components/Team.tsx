@@ -2,7 +2,7 @@ import psychologistImg from "@/assets/psychologist-1.jpg";
 
 export const Team = () => {
   return (
-    <section className="py-24 bg-background">
+    <section id="team" className="py-24 bg-background">
       <div className="container px-4 md:px-6 mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-serif text-foreground">
