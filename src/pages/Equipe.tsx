@@ -1,6 +1,6 @@
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
-import { Play } from "lucide-react";
+import { Play, ArrowRight, Users } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const teamMembers = [
@@ -59,9 +59,18 @@ const Equipe = () => {
           <h1 className="text-4xl md:text-5xl font-serif text-foreground mb-4">
             Nossa Equipe
           </h1>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed mb-8">
             Conheça os profissionais que fazem parte da Coral Psicologia. Cada um com sua história, formação e compromisso com o cuidado da saúde mental.
           </p>
+
+          <div className="max-w-xl mx-auto bg-background/70 backdrop-blur-sm rounded-xl p-5 border border-border/40">
+            <div className="flex items-start gap-3">
+              <Users className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
+              <p className="text-sm text-foreground/80 text-left leading-relaxed">
+                Você pode escolher um profissional específico para iniciar o atendimento ou, se preferir, seguir com o <strong className="text-foreground">atendimento social</strong> e ser direcionado ao profissional disponível.
+              </p>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -116,6 +125,15 @@ const Equipe = () => {
                       </div>
                     )}
                   </div>
+
+                  {/* Contact button */}
+                  <Button
+                    variant="outline"
+                    className="w-full rounded-full border-primary/20 text-foreground hover:bg-primary hover:text-primary-foreground transition-all duration-300 group"
+                  >
+                    Entre em contato com {member.name.split(" ")[0]}. {member.name.split(" ").slice(1).join(" ")}
+                    <ArrowRight className="w-4 h-4 ml-1 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all" />
+                  </Button>
                 </div>
               </article>
             ))}
