@@ -126,14 +126,18 @@ const Equipe = () => {
                     )}
                   </div>
 
-                  {/* Contact button */}
-                  <Button
-                    variant="outline"
-                    className="w-full rounded-full border-primary/20 text-foreground hover:bg-primary hover:text-primary-foreground transition-all duration-300 group"
-                  >
-                    Entre em contato com {member.name.split(" ")[0]}. {member.name.split(" ").slice(1).join(" ")}
-                    <ArrowRight className="w-4 h-4 ml-1 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all" />
-                  </Button>
+                  {/* Contact */}
+                  <div className="space-y-2 pt-1">
+                    <p className="text-sm text-foreground/70 font-display">
+                      Conheça {member.name.startsWith("Dra.") || member.name.startsWith("Dr.") ? "" : ""}{member.name}
+                    </p>
+                    <Button
+                      variant="outline"
+                      className="w-full rounded-full border-primary/20 text-foreground hover:bg-primary hover:text-primary-foreground transition-all duration-300"
+                    >
+                      Entre em contato
+                    </Button>
+                  </div>
                 </div>
               </article>
             ))}
