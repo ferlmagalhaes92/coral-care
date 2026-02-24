@@ -19,7 +19,7 @@ export const Footer = () => {
           </div>
         </div>
         
-        <div className="border-t border-border mt-8 pt-8 text-center text-xs text-muted-foreground">
+        <div className="border-t border-border mt-8 pt-8 text-center text-[12px] text-muted-foreground">
           <p>© {new Date().getFullYear()} Coral Psicologia. Todos os direitos reservados.</p>
         </div>
       </div>

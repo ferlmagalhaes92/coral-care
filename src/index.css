@@ -81,6 +81,18 @@
   h1, h2, h3, h4, h5, h6 {
     @apply font-serif;
   }
+
+  /* Caption / legend typography — mínimo 12px */
+  caption,
+  figcaption,
+  .recharts-legend-item-text,
+  .recharts-cartesian-axis-tick text,
+  .recharts-polar-angle-axis-tick text,
+  .recharts-polar-radius-axis-tick text,
+  .recharts-tooltip-item-name,
+  .recharts-tooltip-item-value {
+    font-size: max(12px, 0.75rem);
+  }
 }
 
 @layer utilities {

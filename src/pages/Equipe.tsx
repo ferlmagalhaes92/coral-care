@@ -1,6 +1,6 @@
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
-import { Play, ArrowRight, Users } from "lucide-react";
+import { Play, Users } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const teamMembers = [
@@ -119,7 +119,7 @@ const Equipe = () => {
                         <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
                           <Play className="w-5 h-5 text-primary ml-0.5" />
                         </div>
-                        <span className="text-xs text-muted-foreground">
+                        <span className="text-[12px] text-muted-foreground">
                           Vídeo de apresentação em breve
                         </span>
                       </div>

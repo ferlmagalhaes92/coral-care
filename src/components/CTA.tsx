@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 
 export const CTA = () => {
   return (
@@ -14,11 +15,12 @@ export const CTA = () => {
           Estamos aqui para caminhar com você nessa jornada de autoconhecimento.
         </p>
         
-        <Button 
-          size="lg" 
+        <Button
+          size="lg"
           className="bg-white text-primary hover:bg-white/90 px-10 py-6 text-lg rounded-full shadow-lg transition-all duration-300 font-medium"
+          asChild
         >
-          Agende sua consulta
+          <Link to="/agendar">Agende sua consulta</Link>
         </Button>
       </div>
     </section>
