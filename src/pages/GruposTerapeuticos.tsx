@@ -2,32 +2,24 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Users, Heart, Sprout, ShieldCheck, ArrowRight } from "lucide-react";
+import { Brain, Heart, ArrowRight } from "lucide-react";
 
 const grupos = [
   {
-    title: "Grupo de Ansiedade",
-    description: "Espaço para compartilhar experiências e desenvolver estratégias coletivas para lidar com a ansiedade no dia a dia.",
+    title: "Grupo focado em Desenvolvimento de Inteligência Emocional",
+    description:
+      "Um lugar onde se conversa sobre como lidar com motivações, tomada de decisões, habilidades de regulação e outros tópicos voltados para um melhor relacionamento com suas próprias emoções.",
+    schedule: "Quartas-feiras",
+    icon: Brain,
+    confirmed: true,
+  },
+  {
+    title: "Grupo focado em Casos de Cuidado Paliativo",
+    description:
+      "Um ambiente para identificação, acolhimento e compartilhamento de ideias e vivências de pessoas próximas ou pessoas em cuidado paliativo.",
+    schedule: "Sextas-feiras",
     icon: Heart,
-    schedule: "Quintas-feiras, 19h–20h30",
-  },
-  {
-    title: "Grupo de Autoconhecimento",
-    description: "Encontros voltados para a exploração da identidade pessoal, valores e propósito de vida.",
-    icon: Sprout,
-    schedule: "Terças-feiras, 18h–19h30",
-  },
-  {
-    title: "Grupo de Relacionamentos",
-    description: "Reflexões sobre vínculos afetivos, comunicação assertiva e dinâmicas interpessoais saudáveis.",
-    icon: Users,
-    schedule: "Segundas-feiras, 19h–20h30",
-  },
-  {
-    title: "Grupo de Acolhimento",
-    description: "Um espaço seguro e sem julgamentos para pessoas que estão passando por momentos difíceis e precisam de apoio emocional.",
-    icon: ShieldCheck,
-    schedule: "Quartas-feiras, 18h–19h30",
+    confirmed: false,
   },
 ];
 
@@ -39,17 +31,17 @@ const GruposTerapeuticos = () => {
       <section className="pt-28 pb-16 bg-secondary/30">
         <div className="container px-4 md:px-6 mx-auto text-center">
           <h1 className="text-4xl md:text-5xl font-serif text-foreground mb-4">
-            Grupos Terapêuticos
+            Grupo Terapêutico
           </h1>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-            Os grupos terapêuticos são espaços de escuta e troca, onde cada participante pode compartilhar suas vivências com acolhimento e sigilo profissional.
+            No Grupo Terapêutico você trabalha a aceitação e o autoconhecimento por meio da relação com o outro.
           </p>
         </div>
       </section>
 
       <section className="py-20">
         <div className="container px-4 md:px-6 mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
             {grupos.map((grupo, index) => (
               <Card
                 key={index}
@@ -67,16 +59,21 @@ const GruposTerapeuticos = () => {
                   <p className="text-muted-foreground leading-relaxed">
                     {grupo.description}
                   </p>
-                  <p className="text-sm font-display font-medium text-primary">
+                  <p className="text-sm font-medium text-primary">
                     {grupo.schedule}
+                    {!grupo.confirmed && (
+                      <span className="ml-2 text-xs text-muted-foreground font-normal">(em breve)</span>
+                    )}
                   </p>
-                  <Button
-                    variant="outline"
-                    className="rounded-full border-primary/20 text-foreground hover:bg-primary hover:text-primary-foreground transition-all duration-300"
-                  >
-                    Quero participar
-                    <ArrowRight className="w-4 h-4 ml-1" />
-                  </Button>
+                  {grupo.confirmed && (
+                    <Button
+                      variant="outline"
+                      className="rounded-full border-primary/20 text-foreground hover:bg-primary hover:text-primary-foreground transition-all duration-300"
+                    >
+                      Quero participar
+                      <ArrowRight className="w-4 h-4 ml-1" />
+                    </Button>
+                  )}
                 </CardContent>
               </Card>
             ))}

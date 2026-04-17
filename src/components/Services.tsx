@@ -1,48 +1,17 @@
-import { 
-  HeartHandshake, 
-  Monitor, 
-  MapPin, 
-  BrainCircuit, 
-  CloudSun, 
-  Users, 
-  Sparkles 
-} from "lucide-react";
+import { HeartHandshake, Sparkles } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 const services = [
   {
-    title: "Psicoterapia individual",
-    description: "Um espaço exclusivo para você se ouvir e se compreender.",
+    title: "Terapia Individual",
+    description: "A terapia individual é um espaço seguro para compreender suas emoções, organizar pensamentos e desenvolver novas formas de lidar com a vida.",
+    topics: ["Ansiedade", "Depressão", "Autoconhecimento", "Luto", "Relacionamentos", "Sobrecarga emocional", "Burnout"],
     icon: HeartHandshake,
   },
   {
-    title: "Atendimento online",
-    description: "Cuidado e acolhimento onde você estiver, com segurança.",
-    icon: Monitor,
-  },
-  {
-    title: "Atendimento presencial",
-    description: "Um ambiente físico preparado para o seu conforto.",
-    icon: MapPin,
-  },
-  {
-    title: "Ansiedade e estresse",
-    description: "Ferramentas para lidar com a pressão do dia a dia.",
-    icon: CloudSun,
-  },
-  {
-    title: "Depressão",
-    description: "Acolhimento para momentos de dor e reconstrução de sentido.",
-    icon: BrainCircuit,
-  },
-  {
-    title: "Relacionamentos",
-    description: "Compreensão de vínculos e dinâmicas interpessoais.",
-    icon: Users,
-  },
-  {
-    title: "Autoconhecimento",
-    description: "Desenvolvimento pessoal e fortalecimento da autonomia.",
+    title: "Terapia Infantil",
+    description: "O atendimento infantil busca oferecer um espaço seguro e lúdico onde os pequenos podem expressar suas emoções, medos e descobertas.",
+    topics: ["Ansiedade", "Dificuldade em lidar com frustrações", "Agressividade", "Timidez Excessiva", "Rigidez cognitiva", "Dificuldades de aprendizagem ou comportamento escolar"],
     icon: Sparkles,
   },
 ];
@@ -60,10 +29,10 @@ export const Services = () => {
           </h2>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
           {services.map((service, index) => (
-            <Card 
-              key={index} 
+            <Card
+              key={index}
               className="border-none shadow-sm hover:shadow-md transition-all duration-300 bg-white/80 backdrop-blur-sm group"
             >
               <CardHeader className="pb-2">
@@ -74,10 +43,16 @@ export const Services = () => {
                   {service.title}
                 </CardTitle>
               </CardHeader>
-              <CardContent>
+              <CardContent className="space-y-4">
                 <p className="text-muted-foreground leading-relaxed">
                   {service.description}
                 </p>
+                <div>
+                  <p className="text-sm font-medium text-foreground mb-2">Tópicos:</p>
+                  <p className="text-sm text-muted-foreground">
+                    {service.topics.join("; ")}
+                  </p>
+                </div>
               </CardContent>
             </Card>
           ))}
