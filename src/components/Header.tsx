@@ -30,7 +30,8 @@ export const Header = () => {
       )}
     >
       <div className="container mx-auto px-4 md:px-6 flex items-center justify-between h-16">
-        <Link to="/" className="font-display text-xl md:text-2xl text-primary font-semibold tracking-wide">
+        <Link to="/" className="flex items-center gap-2 font-display text-xl md:text-2xl text-primary font-semibold tracking-wide">
+          <img src="/favicon.svg" alt="Coral Psicologia" className="w-7 h-7" />
           Coral Psicologia
         </Link>
 
