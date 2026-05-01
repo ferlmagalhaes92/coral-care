@@ -1,4 +1,3 @@
-import { HeartHandshake, Sparkles } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 const services = [
@@ -6,13 +5,13 @@ const services = [
     title: "Terapia Individual",
     description: "A terapia individual é um espaço seguro para compreender suas emoções, organizar pensamentos e desenvolver novas formas de lidar com a vida.",
     topics: ["Ansiedade", "Depressão", "Autoconhecimento", "Luto", "Relacionamentos", "Sobrecarga emocional", "Burnout"],
-    icon: HeartHandshake,
+    icon: "/icons/terapia-individual.svg",
   },
   {
     title: "Terapia Infantil",
     description: "O atendimento infantil busca oferecer um espaço seguro e lúdico onde os pequenos podem expressar suas emoções, medos e descobertas.",
     topics: ["Ansiedade", "Dificuldade em lidar com frustrações", "Agressividade", "Timidez Excessiva", "Rigidez cognitiva", "Dificuldades de aprendizagem ou comportamento escolar"],
-    icon: Sparkles,
+    icon: "/icons/terapia-infantil.svg",
   },
 ];
 
@@ -36,8 +35,12 @@ export const Services = () => {
               className="border-none shadow-sm hover:shadow-md transition-all duration-300 bg-white/80 backdrop-blur-sm group"
             >
               <CardHeader className="pb-2">
-                <div className="w-12 h-12 rounded-full bg-secondary flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
-                  <service.icon className="w-6 h-6 text-primary" />
+                <div className="w-14 h-14 mb-4">
+                  <img
+                    src={service.icon}
+                    alt={service.title}
+                    className="w-full h-full"
+                  />
                 </div>
                 <CardTitle className="text-xl font-serif text-foreground">
                   {service.title}
