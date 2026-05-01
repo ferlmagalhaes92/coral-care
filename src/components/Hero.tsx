@@ -35,15 +35,7 @@ export const Hero = () => {
               <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
             </Link>
           </Button>
-          
-          <Button 
-            variant="outline" 
-            size="lg" 
-            className="px-8 py-6 text-lg rounded-full border-primary/20 hover:bg-secondary/50 text-foreground transition-all duration-300"
-          >
-            Conheça o projeto
-          </Button>
-        </div>
+                  </div>
       </div>
     </section>
   );

@@ -13,9 +13,8 @@ export const Footer = () => {
           </div>
           
           <div className="flex gap-8 text-sm text-muted-foreground">
-            <a href="#" className="hover:text-primary transition-colors">Instagram</a>
+            <a href="https://www.instagram.com/coral.psicologia" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">Instagram</a>
             <a href="https://wa.me/5521967389597" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">WhatsApp</a>
-            <a href="#" className="hover:text-primary transition-colors">Email</a>
           </div>
         </div>
         

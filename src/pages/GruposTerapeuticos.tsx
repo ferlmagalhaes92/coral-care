@@ -28,7 +28,7 @@ const GruposTerapeuticos = () => {
     <main className="min-h-screen w-full bg-background overflow-x-hidden">
       <Header />
 
-      <section className="pt-28 pb-16 bg-secondary/30">
+      <section className="pt-40 md:pt-28 pb-16 bg-secondary/30">
         <div className="container px-4 md:px-6 mx-auto text-center">
           <h1 className="text-4xl md:text-5xl font-serif text-foreground mb-4">
             Grupo Terapêutico
