@@ -1,49 +1,56 @@
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
-import { Play, Users } from "lucide-react";
+import { Users } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const teamMembers = [
   {
-    name: "Dra. Ana Silva",
-    role: "Psicóloga Clínica — CRP 06/12345",
-    bio: "Especialista em psicoterapia individual com foco em ansiedade, autoconhecimento e saúde emocional. Acredita no poder da escuta qualificada como ferramenta de transformação pessoal.",
-    photo: "https://images.unsplash.com/photo-1594824476967-48c8b964273f?w=400&h=400&fit=crop&crop=face",
+    name: "Rennan Alves",
+    role: "Psicólogo — Abordagem Centrada na Pessoa",
+    bio: "Atua com escuta empática e não diretiva, criando um espaço seguro para que cada pessoa possa se reconectar com sua própria capacidade de crescimento e autoconhecimento.",
+    photo: "/equipe/rennan-alves.jpeg",
     videoUrl: null,
   },
   {
-    name: "Dr. Pedro Mendes",
-    role: "Psicólogo — CRP 06/23456",
-    bio: "Atua com terapia cognitivo-comportamental voltada para depressão, estresse e dificuldades nos relacionamentos. Defensor de um espaço terapêutico acolhedor e sem julgamentos.",
-    photo: "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=400&h=400&fit=crop&crop=face",
+    name: "Amanda França",
+    role: "Psicóloga — TCC",
+    bio: "Trabalha com Terapia Cognitivo-Comportamental, auxiliando pessoas a identificar e transformar padrões de pensamento que impactam o bem-estar emocional e a qualidade de vida.",
+    photo: "/equipe/amanda-franca.jpeg",
     videoUrl: null,
   },
   {
-    name: "Dra. Camila Rocha",
-    role: "Psicóloga — CRP 06/34567",
-    bio: "Focada em grupos terapêuticos e dinâmicas interpessoais. Trabalha com a construção de vínculos saudáveis e o fortalecimento da autonomia emocional.",
-    photo: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&h=400&fit=crop&crop=face",
+    name: "Sergio Augusto",
+    role: "Psicólogo — Gestalt-terapia",
+    bio: "Utiliza a Gestalt-terapia para trabalhar o aqui e agora, favorecendo o autoconhecimento, a integração das experiências e o desenvolvimento de relações mais autênticas.",
+    photo: "/equipe/sergio-augusto.jpeg",
     videoUrl: null,
   },
   {
-    name: "Dr. Lucas Ferreira",
-    role: "Psicólogo — CRP 06/45678",
-    bio: "Experiência com atendimento online e presencial, atuando em questões de identidade, transições de vida e desenvolvimento pessoal.",
-    photo: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face",
+    name: "Mariana Viana",
+    role: "Psicóloga — Psicanálise",
+    bio: "Trabalha na perspectiva psicanalítica, explorando os processos inconscientes que moldam comportamentos, afetos e vínculos, em um espaço de escuta e elaboração.",
+    photo: "/equipe/mariana-viana.jpeg",
     videoUrl: null,
   },
   {
-    name: "Dra. Juliana Costa",
-    role: "Psicóloga — CRP 06/56789",
-    bio: "Dedicada à saúde mental infantojuvenil e orientação familiar. Busca criar conexões seguras para crianças e adolescentes em seus processos de crescimento.",
-    photo: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&h=400&fit=crop&crop=face",
+    name: "Iolanda Ketelen",
+    role: "Psicóloga — TCC",
+    bio: "Com base na Terapia Cognitivo-Comportamental, apoia pessoas no enfrentamento de ansiedade, depressão e outros desafios emocionais, promovendo mudanças concretas no cotidiano.",
+    photo: "/equipe/iolanda-ketelen.jpeg",
     videoUrl: null,
   },
   {
-    name: "Dr. Rafael Oliveira",
-    role: "Psicólogo — CRP 06/67890",
-    bio: "Atua com palestras e workshops sobre saúde emocional no ambiente corporativo. Apaixonado por levar a psicologia para além do consultório.",
-    photo: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop&crop=face",
+    name: "Fabrício Rezende",
+    role: "Psicólogo — TCC",
+    bio: "Atua com TCC no suporte a questões emocionais e comportamentais, construindo junto ao paciente estratégias práticas para uma vida com mais equilíbrio e saúde mental.",
+    photo: "/equipe/fabricio-rezende.jpeg",
+    videoUrl: null,
+  },
+  {
+    name: "André Henrique",
+    role: "Psicólogo — Gestalt-terapia",
+    bio: "Por meio da Gestalt-terapia, trabalha a consciência das experiências presentes, acolhendo a singularidade de cada pessoa em seu processo de transformação e cuidado de si.",
+    photo: "/equipe/andre-henrique.jpeg",
     videoUrl: null,
   },
 ];
@@ -105,37 +112,20 @@ const Equipe = () => {
                     {member.bio}
                   </p>
 
-                  {/* Video placeholder */}
-                  <div className="pt-2">
-                    {member.videoUrl ? (
-                      <video
-                        src={member.videoUrl}
-                        controls
-                        className="w-full rounded-lg"
-                        preload="metadata"
-                      />
-                    ) : (
-                      <div className="w-full aspect-video bg-muted/60 rounded-lg flex flex-col items-center justify-center gap-2 border border-border/30">
-                        <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
-                          <Play className="w-5 h-5 text-primary ml-0.5" />
-                        </div>
-                        <span className="text-[12px] text-muted-foreground">
-                          Vídeo de apresentação em breve
-                        </span>
-                      </div>
-                    )}
-                  </div>
-
                   {/* Contact */}
-                  <div className="space-y-2 pt-1">
-                    <p className="text-sm text-foreground/70 font-display">
-                      Conheça {member.name.startsWith("Dra.") || member.name.startsWith("Dr.") ? "" : ""}{member.name}
-                    </p>
+                  <div className="pt-1">
                     <Button
                       variant="outline"
                       className="w-full rounded-full border-primary/20 text-foreground hover:bg-primary hover:text-primary-foreground transition-all duration-300"
+                      asChild
                     >
-                      Entre em contato
+                      <a
+                        href={`https://wa.me/5521967389597?text=${encodeURIComponent(`Olá! Gostaria de agendar uma consulta com ${member.name} da Coral Psicologia.`)}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        Entre em contato
+                      </a>
                     </Button>
                   </div>
                 </div>

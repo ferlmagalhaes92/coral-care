@@ -67,9 +67,16 @@ const Palestras = () => {
                   <Button
                     variant="outline"
                     className="rounded-full border-primary/20 text-foreground hover:bg-primary hover:text-primary-foreground transition-all duration-300"
+                    asChild
                   >
-                    Solicitar palestra
-                    <ArrowRight className="w-4 h-4 ml-1" />
+                    <a
+                      href={`https://wa.me/5521967389597?text=${encodeURIComponent(`Olá! Tenho interesse em solicitar a palestra "${palestra.title}" da Coral Psicologia.`)}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Solicitar palestra
+                      <ArrowRight className="w-4 h-4 ml-1" />
+                    </a>
                   </Button>
                 </CardContent>
               </Card>

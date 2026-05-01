@@ -43,9 +43,15 @@ const RAI = () => {
               </ul>
             </div>
 
-            <Button className="rounded-full bg-primary hover:bg-primary/90 text-primary-foreground px-8 py-6 text-lg transition-all duration-300">
-              Quero agendar
-              <ArrowRight className="w-5 h-5 ml-2" />
+            <Button className="rounded-full bg-primary hover:bg-primary/90 text-primary-foreground px-8 py-6 text-lg transition-all duration-300" asChild>
+              <a
+                href={`https://wa.me/5521967389597?text=${encodeURIComponent("Olá! Tenho interesse em agendar um atendimento pelo RAI da Coral Psicologia.")}`}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Quero agendar
+                <ArrowRight className="w-5 h-5 ml-2" />
+              </a>
             </Button>
           </div>
         </div>

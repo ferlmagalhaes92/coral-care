@@ -8,40 +8,39 @@ import { cn } from "@/lib/utils";
 
 const professionals = [
   {
-    name: "Dra. Ana Silva",
-    role: "Psicóloga Clínica",
-    crp: "CRP 06/12345",
-    photo: "https://images.unsplash.com/photo-1594824476967-48c8b964273f?w=400&h=400&fit=crop&crop=face",
+    name: "Rennan Alves",
+    role: "Abordagem Centrada na Pessoa",
+    photo: "/equipe/rennan-alves.jpeg",
   },
   {
-    name: "Dr. Pedro Mendes",
-    role: "Psicólogo",
-    crp: "CRP 06/23456",
-    photo: "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=400&h=400&fit=crop&crop=face",
+    name: "Amanda França",
+    role: "TCC",
+    photo: "/equipe/amanda-franca.jpeg",
   },
   {
-    name: "Dra. Camila Rocha",
-    role: "Psicóloga",
-    crp: "CRP 06/34567",
-    photo: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&h=400&fit=crop&crop=face",
+    name: "Sergio Augusto",
+    role: "Gestalt-terapia",
+    photo: "/equipe/sergio-augusto.jpeg",
   },
   {
-    name: "Dr. Lucas Ferreira",
-    role: "Psicólogo",
-    crp: "CRP 06/45678",
-    photo: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face",
+    name: "Mariana Viana",
+    role: "Psicanálise",
+    photo: "/equipe/mariana-viana.jpeg",
   },
   {
-    name: "Dra. Juliana Costa",
-    role: "Psicóloga",
-    crp: "CRP 06/56789",
-    photo: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&h=400&fit=crop&crop=face",
+    name: "Iolanda Ketelen",
+    role: "TCC",
+    photo: "/equipe/iolanda-ketelen.jpeg",
   },
   {
-    name: "Dr. Rafael Oliveira",
-    role: "Psicólogo",
-    crp: "CRP 06/67890",
-    photo: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop&crop=face",
+    name: "Fabrício Rezende",
+    role: "TCC",
+    photo: "/equipe/fabricio-rezende.jpeg",
+  },
+  {
+    name: "André Henrique",
+    role: "Gestalt-terapia",
+    photo: "/equipe/andre-henrique.jpeg",
   },
 ];
 
@@ -174,7 +173,6 @@ const Agendar = () => {
                         {p.name}
                       </p>
                       <p className="text-[12px] text-primary mt-0.5">{p.role}</p>
-                      <p className="text-[12px] text-muted-foreground">{p.crp}</p>
                     </div>
                   </button>
                 ))}
@@ -211,7 +209,7 @@ const Agendar = () => {
                   asChild
                 >
                   <a
-                    href={`https://wa.me/5511999999999?text=${encodeURIComponent(whatsappMessage)}`}
+                    href={`https://wa.me/5521967389597?text=${encodeURIComponent(whatsappMessage)}`}
                     target="_blank"
                     rel="noopener noreferrer"
                   >
