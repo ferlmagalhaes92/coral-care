@@ -7,54 +7,35 @@ import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
 const professionals = [
-  {
-    name: "Rennan Alves",
-    role: "Abordagem Centrada na Pessoa",
-    photo: "/equipe/rennan-alves.jpeg",
-  },
-  {
-    name: "Amanda França",
-    role: "TCC",
-    photo: "/equipe/amanda-franca.jpeg",
-  },
-  {
-    name: "Sergio Augusto",
-    role: "Gestalt-terapia",
-    photo: "/equipe/sergio-augusto.jpeg",
-  },
-  {
-    name: "Mariana Viana",
-    role: "Psicanálise",
-    photo: "/equipe/mariana-viana.jpeg",
-  },
-  {
-    name: "Iolanda Ketelen",
-    role: "TCC",
-    photo: "/equipe/iolanda-ketelen.jpeg",
-  },
-  {
-    name: "Fabrício Rezende",
-    role: "TCC",
-    photo: "/equipe/fabricio-rezende.jpeg",
-  },
-  {
-    name: "André Henrique",
-    role: "Gestalt-terapia",
-    photo: "/equipe/andre-henrique.jpeg",
-  },
+  { name: "Rennan Alves", role: "Abordagem Centrada na Pessoa", photo: "/equipe/rennan-alves.jpeg" },
+  { name: "Amanda França", role: "TCC", photo: "/equipe/amanda-franca.jpeg" },
+  { name: "Sergio Augusto", role: "Gestalt-terapia", photo: "/equipe/sergio-augusto.jpeg" },
+  { name: "Mariana Viana", role: "Psicanálise", photo: "/equipe/mariana-viana.jpeg" },
+  { name: "Iolanda Ketelen", role: "TCC", photo: "/equipe/iolanda-ketelen.jpeg" },
+  { name: "Fabrício Rezende", role: "TCC", photo: "/equipe/fabricio-rezende.jpeg" },
+  { name: "André Henrique", role: "Gestalt-terapia", photo: "/equipe/andre-henrique.jpeg" },
 ];
 
-type Step = "choice" | "professional-select" | "confirmed";
+const DAYS = ["Segunda", "Terça", "Quarta", "Quinta", "Sexta", "Sábado"];
+const PERIODS = ["Manhã", "Tarde", "Noite"];
+
+type Step = "choice" | "professional-select" | "availability" | "confirmed";
 type Path = "social" | "professional";
+
+function toggle(arr: string[], value: string): string[] {
+  return arr.includes(value) ? arr.filter((v) => v !== value) : [...arr, value];
+}
 
 const Agendar = () => {
   const [step, setStep] = useState<Step>("choice");
   const [path, setPath] = useState<Path | null>(null);
   const [selectedProfessional, setSelectedProfessional] = useState<string | null>(null);
+  const [selectedDays, setSelectedDays] = useState<string[]>([]);
+  const [selectedPeriods, setSelectedPeriods] = useState<string[]>([]);
 
   const handleChooseSocial = () => {
     setPath("social");
-    setStep("confirmed");
+    setStep("availability");
   };
 
   const handleChooseProfessional = () => {
@@ -64,13 +45,20 @@ const Agendar = () => {
 
   const handleSelectProfessional = (name: string) => {
     setSelectedProfessional(name);
-    setStep("confirmed");
+    setStep("availability");
   };
+
+  const handleConfirm = () => setStep("confirmed");
+
+  const availabilityText =
+    selectedDays.length > 0 || selectedPeriods.length > 0
+      ? ` Tenho disponibilidade nas ${selectedDays.length > 0 ? selectedDays.join(", ") : ""}${selectedDays.length > 0 && selectedPeriods.length > 0 ? ", " : ""}${selectedPeriods.length > 0 ? "período: " + selectedPeriods.join(", ") : ""}.`
+      : "";
 
   const whatsappMessage =
     path === "social"
-      ? "Olá! Gostaria de entrar na fila do atendimento social da Coral Psicologia."
-      : `Olá! Gostaria de agendar uma consulta com ${selectedProfessional} da Coral Psicologia.`;
+      ? `Olá! Gostaria de entrar na fila do atendimento social da Coral Psicologia.${availabilityText}`
+      : `Olá! Gostaria de agendar uma consulta com ${selectedProfessional} da Coral Psicologia.${availabilityText}`;
 
   return (
     <main className="min-h-screen w-full bg-background overflow-x-hidden">
@@ -93,7 +81,6 @@ const Agendar = () => {
               </p>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-                {/* Opção 1 — Fila social */}
                 <button
                   onClick={handleChooseSocial}
                   className="group text-left p-8 rounded-2xl border-2 border-border/50 hover:border-primary/40 bg-card hover:bg-primary/5 transition-all duration-300 hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
@@ -111,7 +98,6 @@ const Agendar = () => {
                   </div>
                 </button>
 
-                {/* Opção 2 — Escolher profissional */}
                 <button
                   onClick={handleChooseProfessional}
                   className="group text-left p-8 rounded-2xl border-2 border-border/50 hover:border-primary/40 bg-card hover:bg-primary/5 transition-all duration-300 hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
@@ -169,9 +155,7 @@ const Agendar = () => {
                       className="w-14 h-14 rounded-full object-cover flex-shrink-0"
                     />
                     <div className="min-w-0">
-                      <p className="font-serif text-foreground text-sm font-semibold leading-snug">
-                        {p.name}
-                      </p>
+                      <p className="font-serif text-foreground text-sm font-semibold leading-snug">{p.name}</p>
                       <p className="text-[12px] text-primary mt-0.5">{p.role}</p>
                     </div>
                   </button>
@@ -180,7 +164,99 @@ const Agendar = () => {
             </div>
           )}
 
-          {/* ── Etapa 3: Confirmação ── */}
+          {/* ── Etapa 3: Disponibilidade ── */}
+          {step === "availability" && (
+            <div className="max-w-xl mx-auto animate-fade-in">
+              <button
+                onClick={() => setStep(path === "social" ? "choice" : "professional-select")}
+                className="flex items-center gap-1.5 text-sm text-muted-foreground hover:text-primary transition-colors mb-10"
+              >
+                <ArrowLeft className="w-4 h-4" />
+                Voltar
+              </button>
+
+              <div className="text-center mb-10">
+                <h1 className="text-3xl md:text-4xl font-serif text-foreground mb-3 leading-snug">
+                  Qual a sua disponibilidade?
+                </h1>
+                <p className="text-muted-foreground">
+                  Selecione os dias e períodos que funcionam melhor para você. Pode escolher mais de um.
+                </p>
+              </div>
+
+              <div className="space-y-8">
+                {/* Dias da semana */}
+                <div>
+                  <p className="text-sm font-medium text-foreground mb-3">Dias da semana</p>
+                  <div className="grid grid-cols-3 gap-2">
+                    {DAYS.map((day) => {
+                      const selected = selectedDays.includes(day);
+                      return (
+                        <button
+                          key={day}
+                          onClick={() => setSelectedDays(toggle(selectedDays, day))}
+                          className={cn(
+                            "py-2.5 px-3 rounded-xl border-2 text-sm font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary",
+                            selected
+                              ? "border-primary bg-primary text-white"
+                              : "border-border/50 bg-card text-foreground hover:border-primary/40 hover:bg-primary/5"
+                          )}
+                        >
+                          {day}
+                        </button>
+                      );
+                    })}
+                  </div>
+                </div>
+
+                {/* Períodos do dia */}
+                <div>
+                  <p className="text-sm font-medium text-foreground mb-3">Período do dia</p>
+                  <div className="flex gap-2">
+                    {PERIODS.map((period) => {
+                      const selected = selectedPeriods.includes(period);
+                      return (
+                        <button
+                          key={period}
+                          onClick={() => setSelectedPeriods(toggle(selectedPeriods, period))}
+                          className={cn(
+                            "flex-1 py-2.5 px-3 rounded-xl border-2 text-sm font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary",
+                            selected
+                              ? "border-primary bg-primary text-white"
+                              : "border-border/50 bg-card text-foreground hover:border-primary/40 hover:bg-primary/5"
+                          )}
+                        >
+                          {period}
+                        </button>
+                      );
+                    })}
+                  </div>
+                </div>
+              </div>
+
+              <div className="mt-10 flex flex-col sm:flex-row gap-3">
+                <Button
+                  size="lg"
+                  className="bg-primary hover:bg-coral-600 text-white rounded-full px-8 flex-1"
+                  onClick={handleConfirm}
+                  disabled={selectedDays.length === 0 || selectedPeriods.length === 0}
+                >
+                  Continuar
+                  <ChevronRight className="w-4 h-4 ml-1" />
+                </Button>
+                <Button
+                  variant="outline"
+                  size="lg"
+                  className="rounded-full border-primary/20 flex-1"
+                  onClick={handleConfirm}
+                >
+                  Pular esta etapa
+                </Button>
+              </div>
+            </div>
+          )}
+
+          {/* ── Etapa 4: Confirmação ── */}
           {step === "confirmed" && (
             <div className="max-w-lg mx-auto text-center animate-fade-in">
               <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-6">
@@ -188,9 +264,7 @@ const Agendar = () => {
               </div>
 
               <h1 className="text-3xl font-serif text-foreground mb-3">
-                {path === "social"
-                  ? "Tudo certo!"
-                  : `Ótima escolha!`}
+                {path === "social" ? "Tudo certo!" : "Ótima escolha!"}
               </h1>
 
               <p className="text-muted-foreground mb-2">
